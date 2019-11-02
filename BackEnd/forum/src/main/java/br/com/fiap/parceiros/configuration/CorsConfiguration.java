@@ -1,4 +1,4 @@
-package br.com.alura.forum.configuration;
+package br.com.fiap.parceiros.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

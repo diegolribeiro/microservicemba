@@ -1,4 +1,4 @@
-package br.com.alura.forum;
+package br.com.fiap.parceiros;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
