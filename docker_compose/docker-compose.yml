@@ -1,0 +1,38 @@
+version: '3'
+services:
+    database:
+        image: mysql
+        container_name: database
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: fj27_spring
+            MYSQL_USER: caelum
+            MYSQL_PASSWORD: caelum
+        ports:
+            - 3306:3306
+        networks:
+            - production-network
+
+    angApp:
+        image: dribeirodocker/angapp
+        container_name: angularapp
+        ports:
+            - 80:80
+        networks:
+            - production-network
+        depends_on:
+            - database
+    
+    springApp:
+        image: dribeirodocker/firstspringapplication
+        container_name: springapp
+        ports:
+            - 8080:8080
+        networks: 
+            - production-network
+        depends_on:
+            - database
+
+networks:
+    production-network:
+        driver: bridge
