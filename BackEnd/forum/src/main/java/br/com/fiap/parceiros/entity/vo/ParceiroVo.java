@@ -20,7 +20,7 @@ public class ParceiroVo {
 
     private String email;
 
-    private Long enderecoId;
+    private Endereco endereco;
 
     public ParceiroVo(Parceiro entity) {
         this(
@@ -28,7 +28,7 @@ public class ParceiroVo {
             entity.getNome(),
             entity.getSobrenome(),
             entity.getEmail(),
-            Optional.ofNullable(entity.getEnderecoParceiro()).map(Endereco::getId).orElse(null)
+            entity.getEnderecoParceiro()
         );
     }
 

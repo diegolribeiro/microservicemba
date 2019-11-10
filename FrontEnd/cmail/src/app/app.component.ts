@@ -33,13 +33,13 @@ export class AppComponent {
     if (href.includes("play-with-docker.com")) {
       this.API = href.replace("-80.direct.labs.play-with-docker.com", "-8080.direct.labs.play-with-docker.com");
     } else {
-      this.API = "http://192.168.99.100:8080/api/";
+      this.API = "http://192.168.99.100:8080/api/parceiro";
     }
     return this.API;
   }
 
   public getNews() {
-    this.httpClient.get(this.getAPI()).subscribe((data) => {
+    this.httpClient.get(this.getAPI()+"/list").subscribe((data) => {
       console.log(data);
       this.postJSON();
     });
@@ -47,14 +47,16 @@ export class AppComponent {
 
   postJSON() {
     var json = JSON.stringify({
+      id: 0,
       nome: this.parceiro.nome,
       sobrenome: this.parceiro.sobrenome,
       email: this.parceiro.email,
-      enderecoParceiro: {
-        "logradouro": this.parceiro.endereco.logradouro,
-        "numero": this.parceiro.endereco.numero,
-        "complemento": this.parceiro.endereco.complemento,
-        "pontoReferencia": this.parceiro.endereco.pontoReferencia
+      endereco: {
+        id: 0,
+        logradouro: this.parceiro.endereco.logradouro,
+        numero: this.parceiro.endereco.numero,
+        complemento: this.parceiro.endereco.complemento,
+        pontoReferencia: this.parceiro.endereco.pontoReferencia
       }
     });
 

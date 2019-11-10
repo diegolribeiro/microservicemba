@@ -45,7 +45,7 @@ public class Parceiro {
             vo.getNome(),
             vo.getSobrenome(),
             vo.getEmail(),
-            null
+            vo.getEndereco()
         );
     }
 

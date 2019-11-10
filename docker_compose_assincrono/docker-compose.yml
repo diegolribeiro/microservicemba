@@ -1,0 +1,37 @@
+version: "3.7"
+services:
+  usuario:
+    image: goncalvesgabrielsilva/controle-usuario:0.0.1-SNAPSHOT
+    ports:
+     - "8080:8080"
+    networks:
+     - trabalho
+    deploy:
+      replicas: 1
+    depends_on:
+      - activemq 
+  coleta:
+    image: goncalvesgabrielsilva/controle-coleta:0.0.1-SNAPSHOT
+    ports:
+     - "8081:8081"
+    networks:
+     - trabalho   
+    deploy:
+      mode: global       
+      replicas: 1
+    depends_on:
+      - activemq
+  activemq:
+    image: smaject/activemq:latest
+    ports:
+     - "8161:8161"
+     - "61616:61616"
+     - "61613:61613"
+    networks:
+     - trabalho
+    deploy:
+      mode: global
+      replicas: 1
+networks:
+  trabalho:
+
