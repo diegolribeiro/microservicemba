@@ -20,7 +20,6 @@
 # Docker Compose
 ```
 version: '3'
-
 services:
     database:
         image: mysql
@@ -46,7 +45,7 @@ services:
             - database
     
     springApp:
-        image: dribeirodocker/firstspringapplication
+        image: dribeirodocker/springapplicationv2
         container_name: springapp
         ports:
             - 8080:8080
